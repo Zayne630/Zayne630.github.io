@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的成长实验室</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .stat-box {
+            background: #f7f9fc;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 我的成长实验室</h1>
+            <p>一个自动化专业学生的自我优化项目</p>
+        </div>
+
+        <div class="card">
+            <h2>📊 当前状态监控</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-number" id="days-running">0</div>
+                    <div>天持续运行</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div>正在进行的项目</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">12</div>
+                    <div>技能节点</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎯 本月目标进度</h2>
+            <p>完成个人网站搭建并上线</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress1"></div>
+            </div>
+            <p style="margin-top:10px; color:#666;">进度: <span id="progress-text">75</span>%</p>
+        </div>
+
+        <div class="card">
+            <h2>🌱 最近更新</h2>
+            <ul id="updates" style="list-style:none; padding:0;">
+                <li style="padding:10px 0; border-bottom:1px solid #eee;">
+                    <span style="color:#667eea; font-weight:bold;">2024-01-15</span> 
+                    网站基础架构搭建完成
+                </li>
+                <li style="padding:10px 0; border-bottom:1px solid #eee;">
+                    <span style="color:#667eea; font-weight:bold;">2024-01-10</span> 
+                    确定网站定位：人生自动化仪表盘
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 计算网站运行天数
+        const startDate = new Date('2024-01-15');
+        const today = new Date();
+        const daysRunning = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        document.getElementById('days-running').textContent = daysRunning;
+
+        // 动画效果：进度条填充
+        setTimeout(() => {
+            document.getElementById('progress1').style.width = '75%';
+        }, 500);
+
+        // 简单的交互：点击卡片显示详情
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
